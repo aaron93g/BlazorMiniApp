@@ -1,0 +1,56 @@
+﻿@page "/addressentry"
+<PageTitle>Address Entry</PageTitle>
+
+<h3>Address Entry</h3>
+
+<EditForm Model="address" OnValidSubmit="ValidSubmission" >
+    <DataAnnotationsValidator/>
+    <ValidationSummary/>
+    
+    <div>
+        <label for="address" class="form-label">@nameof(address.Street)</label>
+        <InputText id="address" @bind-Value="address.Street"></InputText>
+    </div>
+
+    <div>
+        <label for="address" class="form-label">@nameof(address.City)</label>
+        <InputText id="address" class="form-control-lg" @bind-Value="address.City"></InputText>
+    </div>
+
+
+    <div>
+        <label for="address" class="form-label">@nameof(address.State)</label>
+        <InputText id="address" class="form-control-sm" @bind-Value="address.State"></InputText>
+    </div>
+
+
+    <div>
+        <label for="address" class="form-label">@nameof(address.ZipCode)</label>
+        <InputText id="address" class="form-control-color" @bind-Value="address.ZipCode"></InputText>
+    </div>
+
+
+    <button class="btn btn-primary" type="submit">Submit</button>
+</EditForm>
+
+
+<ul>
+    @foreach(string fullAddress in addresses)
+    {
+        <li>@fullAddress</li>
+    }
+</ul>
+
+
+
+@code {
+    private List<string> addresses = new ();
+    private AddressModel address = new();
+
+
+    private void ValidSubmission()
+    {
+        addresses.Add(address.FullAddress);
+        address = new();
+    }
+}
