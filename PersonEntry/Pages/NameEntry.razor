@@ -10,11 +10,11 @@
 
     <div>
         <label for="person" class="form-label" >@nameof(person.FirstName)</label>
-        <InputText id="person" class="form-control" @bind-Value = "person.FirstName"></InputText>
+        <InputText id="person" class="form-control-sm" @bind-Value = "person.FirstName"></InputText>
     </div>
     <div>
         <label for="person" class="form-label" >@nameof(person.LastName)</label>
-        <InputText id="person" @bind-Value="person.LastName" class="form-control"></InputText>
+        <InputText id="person" @bind-Value="person.LastName" class="form-control-sm"></InputText>
     </div>
 
     <button class="btn btn-primary" type="submit">Submit</button>
@@ -23,10 +23,10 @@
 
 
 <ul>
-    @foreach (string name in people)
+    @foreach (PersonModel name in people)
     {
         <li>
-            @name
+            @name.FullName
         </li>
     }
 </ul>
@@ -35,12 +35,12 @@
 
 
 @code {
-    PersonModel person = new();
-    private List<string> people = new();
+    private PersonModel person = new();
+    private List<PersonModel> people = new();
 
     private void ValidSubmission()
     {
-        people.Add(person.FullName);
+        people.Add(person);
         person = new();
     }
 }

@@ -6,28 +6,11 @@
 <EditForm Model="address" OnValidSubmit="ValidSubmission" >
     <DataAnnotationsValidator/>
     <ValidationSummary/>
-    
-    <div>
-        <label for="address" class="form-label">@nameof(address.Street)</label>
-        <InputText id="address" @bind-Value="address.Street"></InputText>
-    </div>
 
-    <div>
-        <label for="address" class="form-label">@nameof(address.City)</label>
-        <InputText id="address" class="form-control-lg" @bind-Value="address.City"></InputText>
-    </div>
-
-
-    <div>
-        <label for="address" class="form-label">@nameof(address.State)</label>
-        <InputText id="address" class="form-control-sm" @bind-Value="address.State"></InputText>
-    </div>
-
-
-    <div>
-        <label for="address" class="form-label">@nameof(address.ZipCode)</label>
-        <InputText id="address" class="form-control-color" @bind-Value="address.ZipCode"></InputText>
-    </div>
+    <InputText placeholder="Street Address" @bind-Value="address.Street" /> <br />
+    <InputText placeholder="City Address" class="form-control-lg" @bind-Value="address.City" /> <br />
+    <InputText placeholder="State Address" class="form-control-sm" @bind-Value="address.State" /> <br />
+    <InputText placeholder="Zip Code Address" class="form-control-color" @bind-Value="address.ZipCode" /> <br />
 
 
     <button class="btn btn-primary" type="submit">Submit</button>
